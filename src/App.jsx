@@ -1,26 +1,49 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import Features from './components/Features'
+import Footer from './components/Footer'
+import Login from './components/Login'
+import Dashboard from './components/Dashboard'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Home(){
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <>
+      <Hero />
+      <section id="profil" className="py-16 sm:py-24">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Profil Singkat</h2>
+            <p className="mt-3 text-gray-600">
+              Madrasah Modern berkomitmen menghadirkan pendidikan Islami yang relevan dengan tantangan zaman. 
+              Mengedepankan akhlak mulia, kompetensi global, dan teknologi sebagai penunjang pembelajaran.
+            </p>
+            <ul className="mt-4 space-y-2 text-gray-700 list-disc list-inside">
+              <li>Fokus pada pembinaan karakter</li>
+              <li>Ekstrakurikuler beragam & kompetitif</li>
+              <li>Kolaborasi orang tua & sekolah yang erat</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="aspect-video rounded-xl bg-gradient-to-br from-emerald-100 to-sky-100" />
+          </div>
         </div>
-      </div>
+      </section>
+      <Features />
+      <Footer />
+    </>
+  )
+}
+
+function App(){
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-emerald-50/40">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </div>
   )
 }
